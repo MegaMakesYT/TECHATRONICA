@@ -10,15 +10,16 @@
         
         :root {
             --copper: #b87333;
+            --copper-dim: #8a5626;
             --copper-light: #d99058;
-            --steel: #71717a;
-            --concrete: #a1a1aa;
+            --deep-bg: #050506;
+            --card-bg: #0c0c0e;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #f4f4f5;
+            background-color: var(--deep-bg);
+            color: #a1a1aa; /* Softer text */
         }
 
         .copper-text { color: var(--copper); }
@@ -26,32 +27,36 @@
         .copper-border { border-color: var(--copper); }
         
         .glass-card {
-            background: rgba(24, 24, 27, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(184, 115, 51, 0.2);
+            background: var(--card-bg);
+            border: 1px solid rgba(184, 115, 51, 0.1);
             transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            border-color: var(--copper);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px -10px rgba(184, 115, 51, 0.3);
+            border-color: var(--copper-dim);
+            background: #111113;
+            transform: translateY(-2px);
         }
 
         .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(184, 115, 51, 0.15), transparent);
+            background: radial-gradient(circle at 50% -20%, rgba(184, 115, 51, 0.1), transparent 70%);
         }
 
         .nav-link {
             position: relative;
             transition: color 0.3s;
+            color: #71717a;
+        }
+
+        .nav-link:hover {
+            color: var(--copper);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -4px;
             left: 0;
             background-color: var(--copper);
@@ -66,14 +71,18 @@
             width: 100%;
             height: 100px;
             z-index: 10;
-            background: linear-gradient(0deg, rgba(184, 115, 51, 0) 0%, rgba(184, 115, 51, 0.05) 50%, rgba(184, 115, 51, 0) 100%);
+            background: linear-gradient(0deg, transparent 0%, rgba(184, 115, 51, 0.03) 50%, transparent 100%);
             position: absolute;
-            animation: scan 4s linear infinite;
+            animation: scan 6s linear infinite;
         }
 
         @keyframes scan {
             0% { top: -100px; }
             100% { top: 100%; }
+        }
+
+        h1, h2, h3 {
+            color: #e4e4e7; /* Off-white for readability without glare */
         }
     </style>
 </head>
@@ -81,138 +90,143 @@
     <div class="scanline pointer-events-none"></div>
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 px-6 py-4 flex justify-between items-center glass-card border-none rounded-none border-b border-zinc-800">
+    <nav class="sticky top-0 z-50 px-6 py-4 flex justify-between items-center glass-card border-none rounded-none border-b border-zinc-900/50">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 copper-bg flex items-center justify-center font-black text-black text-xl italic">T</div>
-            <span class="text-xl font-black tracking-tighter italic">TECHATRONIC</span>
+            <div class="w-8 h-8 copper-bg flex items-center justify-center font-black text-black text-xl italic shadow-[0_0_15px_rgba(184,115,51,0.3)]">T</div>
+            <span class="text-xl font-black tracking-tighter italic text-zinc-200">TECHATRONIC</span>
         </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium tracking-widest uppercase">
-            <a href="#solutions" class="nav-link hover:text-[var(--copper)]">Lösungen</a>
-            <a href="#infra" class="nav-link hover:text-[var(--copper)]">Infrastruktur</a>
-            <a href="#stats" class="nav-link hover:text-[var(--copper)]">Produktion</a>
-            <a href="#" class="px-4 py-2 border copper-border copper-text hover:bg-[var(--copper)] hover:text-black transition-colors">Portal</a>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em] uppercase">
+            <a href="#solutions" class="nav-link">Lösungen</a>
+            <a href="#infra" class="nav-link">Infrastruktur</a>
+            <a href="#stats" class="nav-link">Produktion</a>
+            <a href="#" class="px-4 py-2 border border-zinc-800 hover:border-[var(--copper)] hover:text-[var(--copper)] transition-all">Mitarbeiter-Login</a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-        <div class="mb-4 inline-block px-3 py-1 border border-zinc-700 bg-zinc-900 text-zinc-400 text-xs tracking-widest uppercase">
-            Established for Efficiency
+    <section class="relative min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
+        <div class="mb-4 inline-block px-3 py-1 border border-zinc-800 bg-zinc-950 text-zinc-500 text-[10px] tracking-[0.3em] uppercase">
+            Industrial Excellence System v2.4
         </div>
-        <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 uppercase leading-none">
-            Precision <span class="copper-text">Meets</span> <br>Infrastructure
+        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 uppercase leading-none italic">
+            Heavy <span class="copper-text">Duty</span> <br>Solutions
         </h1>
-        <p class="max-w-2xl text-zinc-400 text-lg md:text-xl font-light">
-            Von modularen Rahmen bis hin zu massiven Brückenbauwerken – Techatronic liefert das Rückgrat für die moderne Industrie und Logistik.
+        <p class="max-w-xl text-zinc-500 text-base md:text-lg font-light leading-relaxed">
+            Hochfeste Stahlbeton-Infrastruktur und fortschrittliche Kupfer-Veredelung für den interstellaren Pionierbau.
         </p>
     </section>
 
     <!-- Core Services -->
-    <main class="container mx-auto px-6 py-24">
-        <div id="solutions" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-            <div class="glass-card p-8 group">
-                <div class="text-zinc-500 text-sm mb-4">01 / PRODUKTION</div>
-                <h3 class="text-2xl font-bold mb-4 uppercase">Kupfer-Speziallösungen</h3>
-                <p class="text-zinc-400 mb-6">Wir fertigen Bleche, Drähte und Kabel mit höchstem Reinheitsgrad für maximale Energieeffizienz.</p>
-                <ul class="text-sm space-y-2 text-zinc-500 italic">
-                    <li>• Hochleitfähiges Kupferblech</li>
-                    <li>• Industrielle Wickeldrähte</li>
-                    <li>• Schwerlast-Energiekabel</li>
+    <main class="container mx-auto px-6 py-12">
+        <div id="solutions" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+            <div class="glass-card p-8">
+                <div class="text-zinc-600 text-[10px] tracking-widest mb-6 uppercase">Sector A / Copper</div>
+                <h3 class="text-xl font-bold mb-4 uppercase italic">Kupfer-Fabrikation</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">Präzisionsgefertigte Bleche, Drähte und Kabel für Hochspannungsanwendungen.</p>
+                <div class="h-[1px] w-full bg-zinc-900 mb-6"></div>
+                <ul class="text-[11px] space-y-2 text-zinc-600 uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Kupferblech</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Industrie-Draht</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Starkstromkabel</li>
                 </ul>
             </div>
 
             <div class="glass-card p-8">
-                <div class="text-zinc-500 text-sm mb-4">02 / KOMPONENTEN</div>
-                <h3 class="text-2xl font-bold mb-4 uppercase">Maschinenbau</h3>
-                <p class="text-zinc-400 mb-6">Unsere modularen Rahmen und Motoren sind die standardisierten Bausteine jeder automatisierten Anlage.</p>
-                <ul class="text-sm space-y-2 text-zinc-500 italic">
-                    <li>• Modulare Rahmen (Standard/Heavy)</li>
-                    <li>• Hochleistungsmotoren</li>
-                    <li>• Präzisions-Elektronikgehäuse</li>
+                <div class="text-zinc-600 text-[10px] tracking-widest mb-6 uppercase">Sector B / Assembly</div>
+                <h3 class="text-xl font-bold mb-4 uppercase italic">Komponenten</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">Modulare Rahmen und hocheffiziente Motoren für automatisierte Fertigungsketten.</p>
+                <div class="h-[1px] w-full bg-zinc-900 mb-6"></div>
+                <ul class="text-[11px] space-y-2 text-zinc-600 uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Modularer Rahmen</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Elektromotor v2</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Rotoren-Gehäuse</li>
                 </ul>
             </div>
 
             <div class="glass-card p-8">
-                <div class="text-zinc-500 text-sm mb-4">03 / BAUSTOFFE</div>
-                <h3 class="text-2xl font-bold mb-4 uppercase">Beton & Verbund</h3>
-                <p class="text-zinc-400 mb-6">Stahlbetonträger und Betonfertigteile für extreme Lasten und dauerhafte Beständigkeit.</p>
-                <ul class="text-sm space-y-2 text-zinc-500 italic">
-                    <li>• Stahlbetonträger (Vorgespannt)</li>
-                    <li>• Industrie-Beton Mischungen</li>
-                    <li>• Fundament-Segmente</li>
+                <div class="text-zinc-600 text-[10px] tracking-widest mb-6 uppercase">Sector C / Civil</div>
+                <h3 class="text-xl font-bold mb-4 uppercase italic">Beton & Träger</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">Massive Stahlbetonträger und Betonmischungen für großangelegte Bauvorhaben.</p>
+                <div class="h-[1px] w-full bg-zinc-900 mb-6"></div>
+                <ul class="text-[11px] space-y-2 text-zinc-600 uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Stahlbetonträger</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Industriebeton</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 copper-bg"></span>Träger-Verbund</li>
                 </ul>
             </div>
         </div>
 
         <!-- Infrastructure Section -->
-        <div id="infra" class="relative overflow-hidden glass-card p-12 border-l-4 copper-border">
+        <div id="infra" class="relative overflow-hidden glass-card p-10 border-r-2 border-zinc-800">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl font-black uppercase mb-6 italic tracking-tighter">Abteilung für <br><span class="copper-text underline decoration-2 underline-offset-8">Brückenbau & Logistik</span></h2>
-                    <p class="text-zinc-400 mb-8 leading-relaxed">
-                        Die Zukunft der Fortbewegung verlangt nach massiven Lösungen. Techatronic projektiert und baut Brückensysteme für Fahrzeuge und schwere Logistiktransporte. Wir kombinieren unsere Expertise in Stahlbeton mit intelligenten Kupfer-Leitsystemen.
+                    <h2 class="text-3xl font-black uppercase mb-6 italic tracking-tight">Division <br><span class="copper-text font-normal">Brückenbau</span></h2>
+                    <p class="text-zinc-500 mb-8 text-sm leading-relaxed">
+                        Logistik ist der Lebensnerv jeder Fabrik. Wir bauen Brücken, die halten – optimiert für Fahrzeugverkehr und schwere Förderband-Systeme. Jedes Bauwerk nutzt unsere hauseigenen Stahlbetonträger für maximale Spannweiten.
                     </p>
-                    <div class="flex gap-4">
-                        <div class="text-center">
-                            <div class="text-3xl font-black copper-text">0.0%</div>
-                            <div class="text-[10px] uppercase tracking-widest text-zinc-500">Versagensrate</div>
+                    <div class="flex gap-8">
+                        <div>
+                            <div class="text-xs text-zinc-600 uppercase mb-1">Status</div>
+                            <div class="text-sm font-bold text-emerald-900 uppercase tracking-tighter">Bereitgestellt</div>
                         </div>
-                        <div class="border-l border-zinc-700 mx-4"></div>
-                        <div class="text-center">
-                            <div class="text-3xl font-black copper-text">INFRA</div>
-                            <div class="text-[10px] uppercase tracking-widest text-zinc-500">Bereitstellung</div>
+                        <div>
+                            <div class="text-xs text-zinc-600 uppercase mb-1">Lastklasse</div>
+                            <div class="text-sm font-bold text-zinc-400 uppercase tracking-tighter">Ultra-Heavy</div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-zinc-800 h-64 flex items-center justify-center relative border border-zinc-700">
-                    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(#b87333 1px, transparent 1px), linear-gradient(90deg, #b87333 1px, transparent 1px); background-size: 20px 20px;"></div>
-                    <div class="text-center z-10 p-6">
-                        <div class="text-zinc-500 font-mono text-xs mb-2 uppercase">[ Blueprint Preview ]</div>
-                        <div class="w-48 h-1 bg-zinc-600 mb-4 mx-auto relative overflow-hidden">
-                            <div class="absolute inset-0 copper-bg w-2/3"></div>
-                        </div>
-                        <p class="text-xs italic text-zinc-500">Visualisierung eines Stahlbetonträgers Typ-T4</p>
+                <div class="bg-black/50 aspect-video flex items-center justify-center relative border border-zinc-900 overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#b87333 1px, transparent 1px), linear-gradient(90deg, #b87333 1px, transparent 1px); background-size: 30px 30px;"></div>
+                    <div class="text-center z-10">
+                        <svg class="w-32 h-20 text-zinc-800" viewBox="0 0 100 40">
+                            <path d="M0 35 L20 10 L40 35 L60 10 L80 35 L100 10" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <rect x="0" y="35" width="100" height="2" fill="var(--copper-dim)"/>
+                        </svg>
+                        <p class="text-[9px] uppercase tracking-[0.4em] text-zinc-600 mt-4 italic">Träger-Struktur Analyse</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Live Stats -->
-        <section id="stats" class="mt-32 pt-24 border-t border-zinc-800">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-zinc-500 text-xs uppercase mb-2">Cu-Wire Export</div>
-                    <div class="text-4xl font-bold font-mono">2.4k <span class="text-sm font-normal text-zinc-600">m/min</span></div>
+        <section id="stats" class="mt-24 py-12 border-t border-zinc-900">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="border-l border-zinc-900 pl-4">
+                    <div class="text-zinc-600 text-[9px] uppercase tracking-widest mb-2">Cu-Wire Output</div>
+                    <div class="text-3xl font-light text-zinc-400 font-mono">2.4k<span class="text-xs text-zinc-700 ml-1">m/m</span></div>
                 </div>
-                <div>
-                    <div class="text-zinc-500 text-xs uppercase mb-2">Modular Frames</div>
-                    <div class="text-4xl font-bold font-mono">152 <span class="text-sm font-normal text-zinc-600">p/h</span></div>
+                <div class="border-l border-zinc-900 pl-4">
+                    <div class="text-zinc-600 text-[9px] uppercase tracking-widest mb-2">Frames/hr</div>
+                    <div class="text-3xl font-light text-zinc-400 font-mono">152</div>
                 </div>
-                <div>
-                    <div class="text-zinc-500 text-xs uppercase mb-2">Concrete Yield</div>
-                    <div class="text-4xl font-bold font-mono">890 <span class="text-sm font-normal text-zinc-600">m³</span></div>
+                <div class="border-l border-zinc-900 pl-4">
+                    <div class="text-zinc-600 text-[9px] uppercase tracking-widest mb-2">Concrete Vol</div>
+                    <div class="text-3xl font-light text-zinc-400 font-mono">890<span class="text-xs text-zinc-700 ml-1">m³</span></div>
                 </div>
-                <div>
-                    <div class="text-zinc-500 text-xs uppercase mb-2">Safety Status</div>
-                    <div class="text-4xl font-bold font-mono copper-text">NOMINAL</div>
+                <div class="border-l border-zinc-900 pl-4">
+                    <div class="text-zinc-600 text-[9px] uppercase tracking-widest mb-2">Efficiency</div>
+                    <div class="text-3xl font-light copper-text font-mono">98.2<span class="text-xs ml-1">%</span></div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black py-12 px-6 border-t border-zinc-900 mt-20">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 copper-bg flex items-center justify-center font-black text-black text-sm italic">T</div>
-                <span class="font-black italic tracking-tighter">TECHATRONIC</span>
+    <footer class="bg-zinc-950 py-16 px-6 border-t border-zinc-900 mt-20">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-5 h-5 copper-bg flex items-center justify-center font-black text-black text-[10px] italic">T</div>
+                    <span class="font-black italic tracking-tighter text-zinc-400">TECHATRONIC</span>
+                </div>
+                <p class="text-[10px] text-zinc-700 max-w-xs leading-loose uppercase tracking-tighter">
+                    Einheiten zur Maximierung des planetaren Outputs. <br>Systeme zur Überwindung geografischer Hürden.
+                </p>
             </div>
-            <div class="text-[10px] text-zinc-600 uppercase tracking-widest text-center">
-                © 2026 Techatronic Industries. Efficiency is Mandatory. // Made for Satisfactory Multiplayer
-            </div>
-            <div class="flex gap-6 text-zinc-500">
-                <span class="hover:text-white cursor-pointer transition-colors text-xs uppercase tracking-tighter">Datenblatt</span>
-                <span class="hover:text-white cursor-pointer transition-colors text-xs uppercase tracking-tighter">Impressum</span>
+            
+            <div class="text-[9px] text-zinc-700 uppercase tracking-widest text-right">
+                © 2026 Techatronic Industries. <br>
+                <span class="text-zinc-800">Satisfactory Global Logistics Network</span>
             </div>
         </div>
     </footer>
